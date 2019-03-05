@@ -27,6 +27,7 @@ function RefreshClasses(){
 
 /*入口在这*/
 function StartSelecting(){
+    document.getElementById("kxqxktskg").value = 0;
     Open_panel();
     setTimeout(Click_button,0.25);
     setTimeout(RefreshClasses,2);
