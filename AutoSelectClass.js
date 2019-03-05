@@ -1,11 +1,13 @@
-function open_block(){
+/*打开课程panel*/
+function Open_panel(){
     var course_block=document.getElementsByClassName('panel panel-info');
 for (j=1;j<=course_block.length-1;j++){
     course_block[j].children[0].children[7].click();
 };
 };
 
-function click_but(){
+/*点击选课按钮*/
+function Click_button(){
     var course_block=document.getElementsByClassName('body_tr');
 for (k=0;k<course_block.length;k++){
     if(course_block[k].getElementsByClassName('jsxm')[0].textContent==='尔雅'||
@@ -17,15 +19,18 @@ for (k=0;k<course_block.length;k++){
 };
 };
 
-function ref(){
+/*刷新课程列表*/
+function RefreshClasses(){
     var but=document.getElementsByClassName('btn btn-primary btn-sm');
     but[0].click();
 };
 
-function implement(){
-    open_block();
-    setTimeout(click_but,0.5);
-    setTimeout(ref,2);
+/*入口在这*/
+function StartSelecting(){
+    Open_panel();
+    setTimeout(Click_button,0.25);
+    setTimeout(RefreshClasses,2);
 };
 
-setInterval(implement,500);
+
+setInterval(StartSelecting,500);
