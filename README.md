@@ -1,7 +1,7 @@
 # QUST-AutoSelectClass
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Last Commit](https://img.shields.io/github/last-commit/QUST-Coder/retarded-qust.svg?style=flat)](https://github.com/QUST-Coder/retarded-qust/commits) [![Join the chat at https://gitter.im/retarded-qust/community](https://badges.gitter.im/retarded-qust/community.svg)](https://gitter.im/retarded-qust/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 ##### 青岛科技大学新教务抢课JS脚本
 
 ## 适用于青岛科技大学新教务系统抢课
