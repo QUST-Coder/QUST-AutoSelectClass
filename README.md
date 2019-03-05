@@ -30,3 +30,5 @@
 其他用户建议直接 fork 本 repo 做更改后发起 pull request，但不保证能够迅速地得到审查。
 
 **所有想要贡献代码的用户都必须先阅读 [CONTRIBUTING.md](https://github.com/QUST-Coder/retarded-qust/blob/master/CONTRIBUTING.md)**
+#### 免责声明
+- 本项目仅供测试，使用后果由使用者自行承担
