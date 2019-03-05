@@ -8,8 +8,9 @@ for (j=1;j<=course_block.length-1;j++){
 function click_but(){
     var course_block=document.getElementsByClassName('body_tr');
 for (k=0;k<course_block.length;k++){
-    if(course_block[k].getElementsByClassName('jsxm')[0].textContent==='¶ûÑÅ'){
-        if (course_block[k].children[21].children[0].textContent==='Ñ¡¿Î'){
+    if(course_block[k].getElementsByClassName('jsxm')[0].textContent==='å°”é›…'||
+       course_block[k].getElementsByClassName('jsxm')[0].textContent==='å“è¶Š'){
+        if (course_block[k].children[21].children[0].textContent==='é€‰è¯¾'){
             course_block[k].children[21].children[0].click();
         };
     };
