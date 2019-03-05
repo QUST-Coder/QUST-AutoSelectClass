@@ -2,10 +2,10 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
 
-##### 青岛科技大学新教务抢课JS脚本
+##### 青岛科技大学新教务自动抢课JS脚本
 **信息学院科协/[QUST-Coder/core-team](https://github.com/orgs/QUST-Coder/teams/core-team)** 出品
 
-## 适用于青岛科技大学新教务系统抢课
+## 适用于青岛科技大学新教务自动抢课
 ### 使用方法
 - 浏览器打开到选课页面（注意是通识选修课页面）
 - 打开开发者工具，选择console
