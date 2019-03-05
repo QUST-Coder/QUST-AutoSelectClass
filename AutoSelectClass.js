@@ -30,6 +30,7 @@ function StartSelecting(){
     Open_panel();
     setTimeout(Click_button,0.25);
     setTimeout(RefreshClasses,2);
+    console.log("完成一次抢课");
 };
 
 
