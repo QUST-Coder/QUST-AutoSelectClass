@@ -1,3 +1,4 @@
+  
 /*打开课程panel*/
 function Open_panel(){
     var course_block=document.getElementsByClassName('panel panel-info');
@@ -12,8 +13,8 @@ function Click_button(){
 for (k=0;k<course_block.length;k++){
     if(course_block[k].getElementsByClassName('jsxm')[0].textContent==='尔雅'||
        course_block[k].getElementsByClassName('jsxm')[0].textContent==='卓越'){
-        if (course_block[k].children[21].children[0].textContent==='选课'){
-            course_block[k].children[21].children[0].click();
+        if (course_block[k].getElementsByTagName("button")[0].textContent==='选课'){
+            course_block[k].getElementsByTagName("button")[0].click();
         };
     };
 };
@@ -33,6 +34,4 @@ function StartSelecting(){
     setTimeout(RefreshClasses,2);
     console.log("完成一次抢课");
 };
-
-
 setInterval(StartSelecting,500);
