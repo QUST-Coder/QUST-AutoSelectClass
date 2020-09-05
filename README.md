@@ -13,7 +13,7 @@
 - 将代码粘贴到console中，回车
 - enjoy！
 ### 最近一次测试时间：
-- [x] 2020.1.6
+- [x] 2020.9.5
 ---
 #### 友情链接
 - 卓越网课自动刷课脚本 https://github.com/QUST-Coder/AutoRunForZHS
