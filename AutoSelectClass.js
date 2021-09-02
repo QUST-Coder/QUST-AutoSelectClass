@@ -1,4 +1,9 @@
 const nonMoocCoursesList = [113017800, 113020500, 113020600]
+const specific_socre = 2
+const wait_for_bettween_two_requests = 300 
+const wait_for_button = 10
+const refreshrate = 2500 
+const round_times = 1
 
 var openPanel = (panel_class) => {
 	panel_class.children[0].children[7].click();
@@ -7,11 +12,21 @@ var openPanel = (panel_class) => {
 async function selectSingleCourse(panel_class) { 
 	openPanel(panel_class);
 	Click_choose_button()
-	await new Promise(r => setTimeout(r, 200));
-	document.getElementById('btn_confirm').click();
-	await new Promise(r => setTimeout(r, 600));
+	var confirm_btn = document.getElementById('btn_confirm');
+    while (confirm_btn == null) {
+        Click_choose_button();
+		confirm_btn = document.getElementById('btn_confirm');
+	    await new Promise(r => setTimeout(r, wait_for_bettween_two_requests));
+    }
+	confirm_btn.click();
+	await new Promise(r => setTimeout(r, wait_for_button));
 	// wait the ok button
-	document.getElementById('btn_ok').click();
+	var ok_button = document.getElementById('btn_ok');
+	if (ok_button == null) {
+		alert("succeed!")
+	} else {
+		ok_button.click();
+	}
 };
 
 /*点击选课按钮*/
@@ -30,7 +45,11 @@ for (k=0;k<course_block.length;k++){
 var isMoocClass = (panel_info) => { 
 	var classofcourse = panel_info.querySelector('.kcmc');
 	var course = classofcourse.textContent.match(/1130+[0-9]+/g);
+    var score = parseInt(classofcourse.children[1].textContent)
 	courseNum = parseInt(course);
+    if (score < specific_socre) {
+        return false
+    }
 	if (course == null) { 
 		return false 
 	}
@@ -40,15 +59,12 @@ var isMoocClass = (panel_info) => {
 	return true 
 }
 
-function selectMooc(mooc_list) {
-	for (var i = 0; i < mooc_list.length; i++) { 
-		(function(i, mooc_list) { 
-			setTimeout(() => {
-				selectSingleCourse(mooc_list[i])
-			}, i * 3000);
-		})(i, mooc_list)
-	}
-}
+function sequentialPromiseGenerator(args_list, asyncfunc) {
+	// return a sequential execute promise
+	return args_list.reduce(function(p, arg) {
+		return p.then(() => asyncfunc(arg));
+	}, Promise.resolve());
+};
 
 function getMoocList(courses_array) {
 	var mooc_list = [];
@@ -62,15 +78,6 @@ function getMoocList(courses_array) {
 	return mooc_list
 }
 
-function selectCourse() {
-	var courses_panel = document.getElementsByClassName('panel panel-info');
-	// The first panel is unuseful
-	var courses_panel_array = Array.from(courses_panel).slice(1);
-	var mooc_list = getMoocList(courses_panel_array);
-	if (mooc_list.length == 0) { return }	
-	selectMooc(mooc_list)
-};
-
 /*刷新课程列表*/
 function RefreshClasses(){
     var but=document.getElementsByClassName('btn btn-primary btn-sm');
@@ -78,5 +85,21 @@ function RefreshClasses(){
 	console.log("refresh")
 };
 
-setInterval(RefreshClasses, 12000);
-setInterval(selectCourse, 12650);
+async function selectCourse() {
+	for (var i = 0; i < round_times; i++) {
+		var courses_panel = document.getElementsByClassName('panel panel-info');
+		// The first panel is unuseful
+		var courses_panel_array = Array.from(courses_panel).slice(1);
+		var mooc_list = getMoocList(courses_panel_array);
+		if (mooc_list.length == 0) { 
+			RefreshClasses()
+			await new Promise(r => setTimeout(r, wait_for_button)); 
+			document.getElementById("more").children[0].children[0].click();
+			continue;
+		}	
+		await sequentialPromiseGenerator(mooc_list, selectSingleCourse);
+		RefreshClasses();
+	}
+};
+
+setInterval(selectCourse, refreshrate)
